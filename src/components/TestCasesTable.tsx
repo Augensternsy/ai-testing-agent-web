@@ -1,3 +1,4 @@
+import { useLanguage } from '../context/LanguageContext';
 import type { TestCase } from '../types/testing';
 
 interface TestCasesTableProps {
@@ -5,16 +6,18 @@ interface TestCasesTableProps {
 }
 
 export default function TestCasesTable({ cases }: TestCasesTableProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="table-wrapper">
       <table>
         <thead>
           <tr>
-            <th>Case ID</th>
-            <th>Title</th>
-            <th>Type</th>
-            <th>Priority</th>
-            <th>Expected Status</th>
+            <th>{t.table.caseId}</th>
+            <th>{t.table.title}</th>
+            <th>{t.table.type}</th>
+            <th>{t.table.priority}</th>
+            <th>{t.table.expectedStatus}</th>
           </tr>
         </thead>
         <tbody>

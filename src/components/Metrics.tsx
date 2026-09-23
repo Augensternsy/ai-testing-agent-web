@@ -1,30 +1,28 @@
-interface MetricItem {
-  value: string;
-  label: string;
-  variant: 'pass' | 'info';
-}
-
-const metrics: MetricItem[] = [
-  { value: '89/89', label: 'Regression Tests', variant: 'pass' },
-  { value: 'Passing', label: 'GitHub Actions', variant: 'pass' },
-  { value: '11/11', label: 'Real DeepSeek E2E', variant: 'pass' },
-  { value: 'PASS', label: 'Stage 5 Agent Repair', variant: 'pass' },
-  { value: '5', label: 'Failure Categories', variant: 'info' },
-  { value: '2', label: 'Max Repair Attempts', variant: 'info' },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Metrics() {
+  const { t } = useLanguage();
+
+  const metrics = [
+    { value: '89/89', label: t.metrics.regression, variant: 'pass' as const },
+    { value: 'Passing', label: t.metrics.githubActions, variant: 'pass' as const },
+    { value: '11/11', label: t.metrics.deepseek, variant: 'pass' as const },
+    { value: 'PASS', label: t.metrics.stage5, variant: 'pass' as const },
+    { value: '5', label: t.metrics.categories, variant: 'info' as const },
+    { value: '2', label: t.metrics.maxAttempts, variant: 'info' as const },
+  ];
+
   return (
     <section className="section" id="metrics">
       <div className="container">
-        <h2 className="section-title">Verified Metrics</h2>
-        <p className="section-subtitle">Project-level verification results — not browser-generated numbers.</p>
+        <h2 className="section-title">{t.metrics.title}</h2>
+        <p className="section-subtitle">{t.metrics.subtitle}</p>
         <div className="metrics-grid">
           {metrics.map((m) => (
             <div key={m.label} className="metric-card">
               <div className={`metric-value ${m.variant}`}>{m.value}</div>
               <div className="metric-label">{m.label}</div>
-              <div className="metric-verified">Verified</div>
+              <div className="metric-verified">{t.metrics.verified}</div>
             </div>
           ))}
         </div>

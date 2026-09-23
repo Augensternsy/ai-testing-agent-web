@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Metrics from './components/Metrics';
@@ -8,7 +9,8 @@ import SafetySection from './components/SafetySection';
 
 const GITHUB_URL = 'https://github.com/Augensternsy/ai-testing-agent';
 
-export default function App() {
+function AppContent() {
+  const { t } = useLanguage();
   const [triggerRun, setTriggerRun] = useState(0);
 
   const handleRunDemo = () => {
@@ -25,17 +27,24 @@ export default function App() {
       <DemoPanel triggerRun={triggerRun} />
       <SafetySection />
 
-      {/* Footer */}
       <footer className="footer">
         <div className="container">
           <div className="footer-links">
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-            <a href={`${GITHUB_URL}/actions`} target="_blank" rel="noopener noreferrer">CI Status</a>
-            <a href={`${GITHUB_URL}/blob/master/README.md`} target="_blank" rel="noopener noreferrer">README</a>
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">{t.footer.links}</a>
+            <a href={`${GITHUB_URL}/actions`} target="_blank" rel="noopener noreferrer">{t.footer.ci}</a>
+            <a href={`${GITHUB_URL}/blob/master/README.md`} target="_blank" rel="noopener noreferrer">{t.footer.readme}</a>
           </div>
-          <p className="footer-text">AI Agent Automated Testing Platform — Built for Test Engineering interviews</p>
+          <p className="footer-text">{t.footer.text}</p>
         </div>
       </footer>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }

@@ -1,3 +1,4 @@
+import { useLanguage } from '../context/LanguageContext';
 import type { PipelineStage } from '../types/testing';
 
 interface StageProgressProps {
@@ -12,6 +13,8 @@ const stageIcons: Record<string, string> = {
 };
 
 export default function StageProgress({ stages }: StageProgressProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="stage-list">
       {stages.map((s, i) => (
@@ -21,7 +24,7 @@ export default function StageProgress({ stages }: StageProgressProps) {
           </div>
           <div className="stage-info">
             <div className="stage-name">
-              Stage {s.stage} — {s.name}
+              {t.stage.stageLabel} {s.stage} — {s.name}
               {s.isAI && <span className="ai-tag">AI</span>}
             </div>
             {s.detail && <div className="stage-detail">{s.detail}</div>}
