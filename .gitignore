@@ -6,3 +6,5 @@ tsconfig.tsbuildinfo
 *.local
 .vercel
 .DS_Store
+
+.vercel
