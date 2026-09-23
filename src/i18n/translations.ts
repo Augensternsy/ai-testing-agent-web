@@ -54,6 +54,7 @@ export const translations = {
       showcaseNote: 'Verified example from Real DeepSeek E2E — not a live result.',
       live: 'LIVE',
       showcase: 'SHOWCASE',
+      demoMode: 'DEMO BACKEND',
       showcaseBanner: 'Showcase Mode — Backend demo service is currently offline. Showing a verified example run.',
     },
     stage: {
@@ -188,6 +189,7 @@ export const translations = {
       showcaseNote: '该结果来自真实 DeepSeek 端到端测试，并非浏览器实时生成。',
       live: 'LIVE',
       showcase: '演示模式',
+      demoMode: '演示后端',
       showcaseBanner: '演示模式 — 在线后端服务当前未启用，正在展示经过真实验证的示例运行结果。',
     },
     stage: {

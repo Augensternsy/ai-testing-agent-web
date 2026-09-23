@@ -6,7 +6,7 @@ export type TestType = 'normal' | 'boundary' | 'exception';
 
 export type Priority = 'P0' | 'P1' | 'P2';
 
-export type RunMode = 'live' | 'showcase';
+export type RunMode = 'live' | 'showcase' | 'demo';
 
 // ===================== Domain Types =====================
 

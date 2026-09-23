@@ -36,7 +36,7 @@ export default function DemoPanel({ triggerRun }: DemoPanelProps) {
 
   useEffect(() => {
     getHealth().then((ok) => {
-      setMode(ok ? 'live' : 'showcase');
+      setMode(ok ? 'demo' : 'showcase');
     });
   }, []);
 
@@ -74,7 +74,7 @@ export default function DemoPanel({ triggerRun }: DemoPanelProps) {
 
     try {
       let runResult: DemoRunResult;
-      if (mode === 'live') {
+      if (mode === 'demo') {
         const input = selectedScenario === 'login' ? JSON.parse(inputValue) : inputValue;
         runResult = await runDemo(selectedScenario, input);
       } else {
@@ -87,7 +87,7 @@ export default function DemoPanel({ triggerRun }: DemoPanelProps) {
       setStages([...animatedStages]);
       setResult(runResult);
     } catch (err) {
-      if (mode === 'live') {
+      if (mode === 'demo') {
         setMode('showcase');
         const showcaseResult = await runShowcase(selectedScenario);
         animatedStages.forEach((_, i) => {
@@ -132,7 +132,7 @@ export default function DemoPanel({ triggerRun }: DemoPanelProps) {
               <span style={{ fontWeight: 600 }}>{t.demo.console}</span>
             </div>
             <div className={`demo-mode-badge ${mode}`}>
-              {mode === 'live' ? `● ${t.demo.live}` : `● ${t.demo.showcase}`}
+              {mode === 'demo' ? `● ${t.demo.demoMode}` : `● ${t.demo.showcase}`}
             </div>
           </div>
 
